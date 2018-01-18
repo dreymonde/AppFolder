@@ -43,7 +43,7 @@ open class Directory {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
     }
     
-    func adding<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
+    public func adding<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
     }
     

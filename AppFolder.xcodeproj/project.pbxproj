@@ -42,6 +42,9 @@
 		7CD789F920112B860057F6E8 /* BaseFolderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789F820112B860057F6E8 /* BaseFolderSpec.swift */; };
 		7CD789FA20112B860057F6E8 /* BaseFolderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789F820112B860057F6E8 /* BaseFolderSpec.swift */; };
 		7CD789FB20112B860057F6E8 /* BaseFolderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789F820112B860057F6E8 /* BaseFolderSpec.swift */; };
+		7CD789FD2011389A0057F6E8 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789FC2011389A0057F6E8 /* Readme.swift */; };
+		7CD789FE2011389A0057F6E8 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789FC2011389A0057F6E8 /* Readme.swift */; };
+		7CD789FF2011389A0057F6E8 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD789FC2011389A0057F6E8 /* Readme.swift */; };
 		8933C7851EB5B820000D00A4 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* Directory.swift */; };
 		8933C7861EB5B820000D00A4 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* Directory.swift */; };
 		8933C7871EB5B820000D00A4 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* Directory.swift */; };
@@ -94,6 +97,7 @@
 		7CD789DB20111D680057F6E8 /* Reporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reporter.swift; sourceTree = "<group>"; };
 		7CD789F420111D850057F6E8 /* DirectorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorySpec.swift; sourceTree = "<group>"; };
 		7CD789F820112B860057F6E8 /* BaseFolderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFolderSpec.swift; sourceTree = "<group>"; };
+		7CD789FC2011389A0057F6E8 /* Readme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		8933C7841EB5B820000D00A4 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* AppFolderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFolderTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* AppFolder.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppFolder.plist; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				8933C7891EB5B82A000D00A4 /* AppFolderTests.swift */,
 				7CD789F420111D850057F6E8 /* DirectorySpec.swift */,
 				7CD789F820112B860057F6E8 /* BaseFolderSpec.swift */,
+				7CD789FC2011389A0057F6E8 /* Readme.swift */,
 			);
 			name = Tests;
 			path = Tests/AppFolderTests;
@@ -541,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD789F520111D850057F6E8 /* DirectorySpec.swift in Sources */,
+				7CD789FD2011389A0057F6E8 /* Readme.swift in Sources */,
 				7CD789EE20111D680057F6E8 /* Reporters.swift in Sources */,
 				7CD789E220111D680057F6E8 /* Global.swift in Sources */,
 				7CD789E820111D680057F6E8 /* Case.swift in Sources */,
@@ -586,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD789F620111D850057F6E8 /* DirectorySpec.swift in Sources */,
+				7CD789FE2011389A0057F6E8 /* Readme.swift in Sources */,
 				7CD789EF20111D680057F6E8 /* Reporters.swift in Sources */,
 				7CD789E320111D680057F6E8 /* Global.swift in Sources */,
 				7CD789E920111D680057F6E8 /* Case.swift in Sources */,
@@ -604,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD789F720111D850057F6E8 /* DirectorySpec.swift in Sources */,
+				7CD789FF2011389A0057F6E8 /* Readme.swift in Sources */,
 				7CD789F020111D680057F6E8 /* Reporters.swift in Sources */,
 				7CD789E420111D680057F6E8 /* Global.swift in Sources */,
 				7CD789EA20111D680057F6E8 /* Case.swift in Sources */,
