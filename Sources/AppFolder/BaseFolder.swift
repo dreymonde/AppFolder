@@ -40,6 +40,10 @@ public enum HomeFolder : BaseFolder {
     
 }
 
+#if os(iOS) || os(tvOS) || os(watchOS)
+    public typealias AppFolder = HomeFolder
+#endif
+
 public protocol AppGroup {
     
     static var groupIdentifier: String { get }
