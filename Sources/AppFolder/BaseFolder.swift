@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum AppFolder {
+public protocol BaseFolder {
     
-    public static let baseURL: URL = {
-        let url = URL(fileURLWithPath: NSHomeDirectory(), isDirectory: true)
-        print("BASE URL:", url)
-        return url
-    }()
+    static var baseURL: URL { get }
+    
+}
+
+extension BaseFolder {
     
     public static var library: Library {
         return Library(baseURL: baseURL)
@@ -26,6 +26,30 @@ public enum AppFolder {
     
     public static var tmp: Temporary {
         return Temporary(baseURL: baseURL)
+    }
+    
+}
+
+public enum HomeFolder : BaseFolder {
+    
+    public static let baseURL: URL = {
+        let url = URL(fileURLWithPath: NSHomeDirectory(), isDirectory: true)
+        print("BASE URL:", url)
+        return url
+    }()
+    
+}
+
+public protocol AppGroup {
+    
+    static var groupIdentifier: String { get }
+    
+}
+
+public final class AppGroupContainer<Group : AppGroup> : BaseFolder {
+    
+    public static var baseURL: URL {
+       return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Group.groupIdentifier)!
     }
     
 }

@@ -8,6 +8,11 @@
 
 import Foundation
 
+fileprivate func fixClassName(_ classname: String) -> String {
+    // check out SR-6787 for more
+    return classname.components(separatedBy: " ")[0]
+}
+
 open class Directory {
     
     public let baseURL: URL
@@ -23,7 +28,11 @@ open class Directory {
     }
     
     open var folderName: String {
-        return String.init(describing: type(of: self)).components(separatedBy: "_").joined(separator: " ")
+        let className = String.init(describing: type(of: self))
+        let fixedClassName = fixClassName(className)
+        return fixedClassName
+            .components(separatedBy: "_")
+            .joined(separator: " ")
     }
     
     public final var subpath: String {
@@ -34,8 +43,16 @@ open class Directory {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
     }
     
-    func adding<Subdirectory : Directory>(subpath: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
+    func adding<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
+    }
+    
+}
+
+extension URL {
+    
+    public init(of directory: Directory) {
+        self = directory.url
     }
     
 }
@@ -48,7 +65,7 @@ public final class Library : Directory {
     }
     
     public final class Application_Support : Directory { }
-    public var application_support: Application_Support {
+    public var applicationSupport: Application_Support {
         return adding()
     }
     

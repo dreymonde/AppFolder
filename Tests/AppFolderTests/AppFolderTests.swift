@@ -18,18 +18,9 @@ class Alba : Directory {
 
 class AppFolderTests: XCTestCase {
     
-    func testExample() {
-        let url = URL.init(string: "https://github.com/")!
-        let b = Alba.Belba(baseURL: url)
-        print(b.folderName)        
+    func testAppFolder() {
+        testDirectory()
+        testBaseFolder()
     }
     
-    func testApplicationSupport() {
-        let applicationSupport = AppFolder.library.application_support.url
-        print(applicationSupport)
-    }
-    
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }
