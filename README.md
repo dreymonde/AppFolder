@@ -46,13 +46,13 @@ let imageCacheURL = imageCache.url
 - **Library/Caches** (`AppFolder.Library.Caches`). Caches directory is the place for *"...data that can be downloaded again or regenerated. ...Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications."* - [iOS Data Storage Guidelines][storage-guidelines-url]
 - **tmp** (`AppFolder.tmp`). *"Use this directory to write temporary files that do not need to persist between launches of your app. Your app should remove files from this directory when they are no longer needed; however, the system may purge this directory when your app is not running."* - [File System Programming Guide][fs-guide-url]
 
-You can access get a link to any of those libraries with one line of code:
+You can get a link to any of these locations with one line of code:
 
 ```swift
 let caches = AppFolder.Library.Caches
 ```
 
-A `caches` is an instance of a `Directory` type, different properties of which you can access:
+A `caches` is an instance of a `Directory` type. You can get URL and other useful properties from it:
 
 ```swift
 let url = caches.url
@@ -77,9 +77,11 @@ Each `Directory` subclass represents a folder. So if we want to describe our **"
 final class Files : Directory { }
 ```
 
-Wait... *That's it?!*
+Wait... *That's it?!* 
 
-By default, **AppFolder** will automatically generate a real folder name based on your class name in runtime, and all the needed logic is already in `Directory`.
+Yes!
+
+By default, **AppFolder** will automatically generate a real folder name based on your class name in runtime, and all the logic is already in `Directory`.
 
 Now we can access our new folder in a very straightforward way:
 
@@ -105,7 +107,7 @@ extension Library.Application_Support {
 
 Now, you may wonder: since `var Files` is a property, why is `var Files`... capitalized?
 
-Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real-world-name (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in the "real world".
+Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real world names (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in the "real world".
 
 *Naming your classes with `_` (for example, `class User_Files : Directory`) will automically generate folder name with a space ("User Files" in this case)*
 
@@ -163,6 +165,10 @@ final class CustomNamedFolder : Directory {
 
 > *- [NSHomeDirectory() reference](https://developer.apple.com/documentation/foundation/1413045-nshomedirectory)*
 
+## Disclaimer
+
+**AppFolder** is in a very early stage. Some stuff will probably be broken at some point.
+
 ## Installation
 
 **AppFolder** is available through [Carthage][carthage-url]. To install, just write into your Cartfile:
@@ -177,7 +183,7 @@ github "dreymonde/AppFolder" ~> 0.1.0
 pod 'AppFolder', '~> 0.1.0'
 ```
 
-And SwiftPM:
+And Swift Package Manager:
 
 ```swift
 dependencies: [
@@ -197,3 +203,4 @@ Tests for **AppFolder** are written with the help of [Spectre](https://github.co
 [storage-practices-url]: https://developer.apple.com/videos/play/fall2017/204/
 [fs-guide-url]: https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
 [carthage-url]: https://github.com/Carthage/Carthage
+[cocoapods-url]: https://github.com/CocoaPods/CocoaPods
