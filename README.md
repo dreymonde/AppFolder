@@ -180,10 +180,6 @@ dependencies: [
 ]
 ```
 
-## Attributions
-
-Tests for **AppFolder** are written with the help of [Spectre](https://github.com/kylef/Spectre) framework by @kylef.
-
 [swift-badge]: https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat
 [swift-url]: https://swift.org
 [platform-badge]: https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg

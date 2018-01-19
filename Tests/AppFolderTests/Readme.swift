@@ -35,20 +35,6 @@ enum MyAppGroup : AppGroup {
 }
 
 func readme() {
-    let documents = AppFolder.Documents
-    let caches = AppFolder.Library.Caches
-    let applicationSupport = AppFolder.Library.Application_Support
-    let tmp = AppFolder.tmp
-
-    caches.url
-    caches.folderName
-    caches.subpath
-
-    caches.baseURL
-    // the same as
-    AppFolder.baseURL
-    
-    print(filesFolder, sharedCaches)
 }
 
 final class CustomNamedFolder : Directory {
