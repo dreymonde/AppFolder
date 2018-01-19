@@ -6,10 +6,10 @@
 [![Platform][platform-badge]][platform-url]
 [![Build Status](https://travis-ci.org/dreymonde/AppFolder.svg?branch=master)](https://travis-ci.org/dreymonde/AppFolder)
 
-**AppFolder** is a lightweight framework that lets you design a friendly, strongly-typed representation of a directories inside your app folder. All the system directories like **"Caches/"** or 
+**AppFolder** is a lightweight framework that lets you design a friendly, strongly-typed representation of a directories inside your app folder. All the system directories like **"Caches/"** and 
 **"Application Support/"** are already present, and you can add yours using just a few lines of code.
 
-**AppFolder** has a simple, friendly and beautiful interface which was made possible with the help of **Swift**'s dark magic: _inheritance_ 😱
+**AppFolder** has a simple and beautiful interface which was made possible with the help of **Swift**'s dark magic: _inheritance_ 😱
 
 ## Usage
 
