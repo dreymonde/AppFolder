@@ -5,12 +5,9 @@
 [![Build Status](https://travis-ci.org/dreymonde/AppFolder.svg?branch=master)](https://travis-ci.org/dreymonde/AppFolder)
 
 **AppFolder** is a lightweight framework that lets you design a friendly, strongly-typed representation of a directories inside your app folder. All the system directories like **"Caches/"** or 
-**"Application Support/"** are already presented, and you can add yours using only a couple of lines of code.
+**"Application Support/"** are already present, and you can add yours using just a few lines of code.
 
-**AppFolder** can offer two unique reasons for you to use it in your code:
-
-1. It makes accessing trivial locations (like **"Documents"** folder) incredibly easy. `NSSearchPathForDirectoriesInDomains` can easily scare you from working with a file system, and **AppFolder** reduces anxiety of this (and other) scary Cocoa API.
-2. It visualizes the folder structure of your app. You design how the folder should be structured using strong types -- and autocompletion.
+**AppFolder** has a simple, friendly and beautiful interface which was made possible with the help of **Swift**'s dark magic: _inheritance_ 😱
 
 ## Usage
 
@@ -39,6 +36,23 @@ let imageCacheURL = imageCache.url
 
 ### Your app folder
 
+```swift
+let documents = AppFolder.Documents
+let tmp = AppFolder.tmp
+let applicationSupport = AppFolder.Library.Application_Support
+let caches = AppFolder.Library.Caches
+
+caches.url // full URL
+caches.folderName // "Caches"
+caches.subpath // "Library/Caches"
+
+caches.baseURL
+// the same as
+AppFolder.baseURL
+
+let fileURL = caches.url.appendingPathComponent("cached-file.json")
+```
+
 **AppFolder** represents a file structure of your app's container and gives you more better understanding of where you store your files. `AppFolder` is a main entrance point to your folders. Inside you can find:
 
 - **Documents** (`AppFolder.Documents`). Inside this directory you should store *"only documents and other data that is user-generated, or that cannot otherwise be recreated by your application."* - [iOS Data Storage Guidelines][storage-guidelines-url]
@@ -46,42 +60,17 @@ let imageCacheURL = imageCache.url
 - **Library/Caches** (`AppFolder.Library.Caches`). Caches directory is the place for *"...data that can be downloaded again or regenerated. ...Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications."* - [iOS Data Storage Guidelines][storage-guidelines-url]
 - **tmp** (`AppFolder.tmp`). *"Use this directory to write temporary files that do not need to persist between launches of your app. Your app should remove files from this directory when they are no longer needed; however, the system may purge this directory when your app is not running."* - [File System Programming Guide][fs-guide-url]
 
-You can get a link to any of these locations with one line of code:
-
-```swift
-let caches = AppFolder.Library.Caches
-```
-
-A `caches` is an instance of a `Directory` type. You can get URL and other useful properties from it:
-
-```swift
-let url = caches.url
-let folderName = caches.folderName
-let subpath = caches.subpath // "Library/Caches"
-let appFolderBaseURL = caches.baseURL // points to AppFolder.baseURL
-
-let fileURL = caches.url.appendingPathComponent("cached-file.json")
-```
-
 ### Adding your own folders
 
-The main beauty of **AppFolder** is that it gives you an ability to describe _your own_ folders with just a few lines of code.
+Let's assume that we want to declare a **"Files"** folder inside our **"Application Support"** directory.
 
-For example, let's assume that we want to add a **"Files"** folder inside our **"Application Support"** directory.
-
-At this point we need to unveil a mystery: `AppFolder.Library.Application_Support` will not return you just *some* `Directory` instance -- it will return you a strongly-typed instance of type `Library.Application_Support`, which is a `Directory` subclass.
-
-Each `Directory` subclass represents a folder. So if we want to describe our **"Files"** folder, we need to create a new subclass:
+Turns out that each folder in **AppFolder** is represented by a concrete `Directory` sublcass. For example, **"Application Support** is of type `Library.Application_Support`. To declare our own folder, we need to create a new `Directory` subclass:
 
 ```swift
 final class Files : Directory { }
 ```
 
-Wait... *That's it?!* 
-
-Yes!
-
-By default, **AppFolder** will automatically generate a real folder name based on your class name in runtime, and all the logic is already in `Directory`.
+By default, folder name will be automatically generated from the class name.
 
 Now we can access our new folder in a very straightforward way:
 
@@ -107,7 +96,7 @@ extension Library.Application_Support {
 
 Now, you may wonder: since `var Files` is a property, why is `var Files`... capitalized?
 
-Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real world names (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in the "real world".
+Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real world names (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in "real world".
 
 *Naming your classes with `_` (for example, `class User_Files : Directory`) will automically generate folder name with a space ("User Files" in this case)*
 
@@ -159,11 +148,11 @@ final class CustomNamedFolder : Directory {
 
 ### Using AppFolder on macOS
 
-`AppFolder` uses `NSHomeDirectory()` under the hood, so, depending on your app, it might just locate you to the user's home directory, as documentation states:
+`AppFolder` uses `NSHomeDirectory()` under the hood, so, depending on your **macOS** app, it might just locate you to the user's home directory, as documentation states:
 
 > In macOS, it is the application’s sandbox directory or the current user’s home directory (if the application is not in a sandbox)
 
-> *- [NSHomeDirectory() reference](https://developer.apple.com/documentation/foundation/1413045-nshomedirectory)*
+*[NSHomeDirectory() reference](https://developer.apple.com/documentation/foundation/1413045-nshomedirectory)*
 
 ## Disclaimer
 

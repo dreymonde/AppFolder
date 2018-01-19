@@ -35,16 +35,18 @@ enum MyAppGroup : AppGroup {
 }
 
 func readme() {
-    let cachesURL = AppFolder.Library.Caches.url
-    let documentsURL = AppFolder.Documents.url
-    print(cachesURL, documentsURL)
-    
-    let imagesCacheURL = AppFolder.Library.Caches.Images.url
-    print(imagesCacheURL)
-    
-    typealias Files = Library.Application_Support.Files
-    let filesFolder = AppFolder.Library.Application_Support.appending(Files.self)
-    let sharedCaches = AppGroupContainer<MyAppGroup>.Library.Caches
+    let documents = AppFolder.Documents
+    let caches = AppFolder.Library.Caches
+    let applicationSupport = AppFolder.Library.Application_Support
+    let tmp = AppFolder.tmp
+
+    caches.url
+    caches.folderName
+    caches.subpath
+
+    caches.baseURL
+    // the same as
+    AppFolder.baseURL
     
     print(filesFolder, sharedCaches)
 }
