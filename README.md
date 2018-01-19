@@ -17,11 +17,10 @@
 ```swift
 import AppFolder
 
-// retrieving URLs for standard folders
-let cachesURL = AppFolder.Library.Caches.url
-let documentsURL = AppFolder.Documents.url
+let documents = AppFolder.Documents
+let caches = AppFolder.Library.Caches
+let cachesURL = caches.url
 
-// describing a folder inside "Library/Caches/"
 extension Library.Caches {
     
     class Images: Directory { }
@@ -32,8 +31,8 @@ extension Library.Caches {
     
 }
 
-// this will return a URL of a "Library/Caches/Images/" folder inside your app container
-let imagesCacheURL = AppFolder.Library.Caches.Images.url
+let imageCache = AppFolder.Library.Caches.Images
+let imageCacheURL = imageCache.url
 ```
 
 ## Guide
@@ -70,7 +69,7 @@ The main beauty of **AppFolder** is that it gives you an ability to describe _yo
 
 For example, let's assume that we want to add a **"Files"** folder inside our **"Application Support"** directory.
 
-At this point we need to unvail a mystery: `AppFolder.Library.Application_Support` will not return you just *some* `Directory` instance -- it will return you a strongly-typed instance of type `Library.Application_Support`, which is a `Directory` subclass.
+At this point we need to unveil a mystery: `AppFolder.Library.Application_Support` will not return you just *some* `Directory` instance -- it will return you a strongly-typed instance of type `Library.Application_Support`, which is a `Directory` subclass.
 
 Each `Directory` subclass represents a folder. So if we want to describe our **"Files"** folder, we need to create a new subclass:
 
