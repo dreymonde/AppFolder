@@ -1,4 +1,4 @@
-![logo](Configs/logo.png)
+![logo](Configs/Logo.png)
 
 # AppFolder
 
