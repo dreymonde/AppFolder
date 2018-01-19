@@ -1,3 +1,5 @@
+![logo](Configs/logo.png)
+
 # AppFolder
 
 [![Swift][swift-badge]][swift-url]
