@@ -27,6 +27,13 @@ func testDirectory() {
             let john = makeDir() as John_Doe
             try expect(john.folderName) == "John Doe"
         }
+        $0.it("can provide a custom name") {
+            class Henry : Directory {
+                override var folderName: String { return "Henry Goals Collection" }
+            }
+            let henry = makeDir() as Henry
+            try expect(henry.subpath) == "Henry Goals Collection"
+        }
         $0.it("has a base url") {
             let directory = Directory(baseURL: HomeFolder.baseURL)
             try expect(directory.baseURL) == HomeFolder.baseURL
@@ -83,11 +90,11 @@ func testDirectory() {
     
     describe("app folder") {
         $0.it("has a documents directory") {
-            let documents = HomeFolder.documents
+            let documents = HomeFolder.Documents
             try expect(documents.subpath) == "Documents"
         }
         $0.it("has a library directory") {
-            let library = HomeFolder.library
+            let library = HomeFolder.Library
             try expect(library.subpath) == "Library"
         }
         $0.it("has a tmp directory") {
@@ -95,11 +102,11 @@ func testDirectory() {
             try expect(tmp.subpath) == "tmp"
         }
         $0.it("has a caches directory") {
-            let caches = HomeFolder.library.caches
+            let caches = HomeFolder.Library.Caches
             try expect(caches.subpath) == "Library/Caches"
         }
         $0.it("has an application support directory") {
-            let applicationSupport = HomeFolder.library.applicationSupport
+            let applicationSupport = HomeFolder.Library.ApplicationSupport
             try expect(applicationSupport.subpath) == "Library/Application Support"
         }
     }

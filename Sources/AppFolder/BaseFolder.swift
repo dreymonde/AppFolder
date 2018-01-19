@@ -14,14 +14,17 @@ public protocol BaseFolder {
     
 }
 
+fileprivate typealias Lib = Library
+fileprivate typealias Docs = Documents
+
 extension BaseFolder {
     
-    public static var library: Library {
-        return Library(baseURL: baseURL)
+    public static var Library: Library {
+        return Lib(baseURL: baseURL)
     }
     
-    public static var documents: Documents {
-        return Documents(baseURL: baseURL)
+    public static var Documents: Documents {
+        return Docs(baseURL: baseURL)
     }
     
     public static var tmp: Temporary {

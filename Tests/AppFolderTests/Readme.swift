@@ -12,19 +12,20 @@ import AppFolder
 extension Library.Caches {
     
     class Images: Directory { }
-    var images: Images {
+    var Images: Images {
         return adding()
     }
     
 }
 
-#if os(iOS)
-    func readme() {
-        let cachesURL = AppFolder.library.caches.url
-        let documentsURL = AppFolder.documents.url
+func readme() {
+    #if os(iOS)
+        let cachesURL = AppFolder.Library.Caches.url
+        let documentsURL = AppFolder.Documents.url
         print(cachesURL, documentsURL)
         
-        let imagesCacheURL = AppFolder.library.caches.images.url
+        let imagesCacheURL = AppFolder.Library.Caches.Images.url
         print(imagesCacheURL)
-    }
-#endif
+    #endif
+}
+

@@ -18,7 +18,7 @@ func testBaseFolder() {
             }
         }
         $0.it("has a library folder") {
-            let library = TestBaseFolder.library
+            let library = TestBaseFolder.Library
             try expect(library.baseURL) == TestBaseFolder.baseURL
             try expect(library).to.beOfType(Library.self)
         }
@@ -28,7 +28,7 @@ func testBaseFolder() {
             try expect(tmp).to.beOfType(Temporary.self)
         }
         $0.it("has s documents folder") {
-            let documents = TestBaseFolder.documents
+            let documents = TestBaseFolder.Documents
             try expect(documents.baseURL) == TestBaseFolder.baseURL
             try expect(documents).to.beOfType(Documents.self)
         }

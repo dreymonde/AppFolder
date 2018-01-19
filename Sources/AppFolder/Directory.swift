@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate func fixClassName(_ classname: String) -> String {
+fileprivate func fixedClassName(_ classname: String) -> String {
     // check out SR-6787 for more
     return classname.components(separatedBy: " ")[0]
 }
@@ -27,12 +27,15 @@ open class Directory {
         self.previous = previous
     }
     
-    open var folderName: String {
-        let className = String.init(describing: type(of: self))
-        let fixedClassName = fixClassName(className)
-        return fixedClassName
+    internal static var defaultFolderName: String {
+        let className = String.init(describing: self)
+        return fixedClassName(className)
             .components(separatedBy: "_")
             .joined(separator: " ")
+    }
+    
+    open var folderName: String {
+        return type(of: self).defaultFolderName
     }
     
     public final var subpath: String {
@@ -60,12 +63,12 @@ extension URL {
 public final class Library : Directory {
     
     public final class Caches : Directory { }
-    public var caches: Caches {
+    public var Caches: Caches {
         return adding()
     }
     
     public final class Application_Support : Directory { }
-    public var applicationSupport: Application_Support {
+    public var ApplicationSupport: Application_Support {
         return adding()
     }
     
