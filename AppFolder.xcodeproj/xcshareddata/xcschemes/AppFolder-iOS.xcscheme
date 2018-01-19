@@ -35,7 +35,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52D6D9851BEFF229002C0205"
-               BuildableName = "AppFolder-iOS Tests.xctest"
+               BuildableName = "AppFolder_Tests.xctest"
                BlueprintName = "AppFolder-iOS Tests"
                ReferencedContainer = "container:AppFolder.xcodeproj">
             </BuildableReference>

@@ -46,7 +46,7 @@ open class Directory {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
     }
     
-    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type) -> Subdirectory {
+    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
     }
     
@@ -68,7 +68,7 @@ public final class Library : Directory {
     }
     
     public final class Application_Support : Directory { }
-    public var ApplicationSupport: Application_Support {
+    public var Application_Support: Application_Support {
         return appending(Application_Support.self)
     }
     

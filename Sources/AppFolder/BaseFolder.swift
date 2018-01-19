@@ -33,7 +33,7 @@ extension BaseFolder {
     
 }
 
-public enum HomeFolder : BaseFolder {
+public enum AppFolder : BaseFolder {
     
     public static let baseURL: URL = {
         let url = URL(fileURLWithPath: NSHomeDirectory(), isDirectory: true)
@@ -42,10 +42,6 @@ public enum HomeFolder : BaseFolder {
     }()
     
 }
-
-#if os(iOS) || os(tvOS) || os(watchOS)
-    public typealias AppFolder = HomeFolder
-#endif
 
 public protocol AppGroup {
     

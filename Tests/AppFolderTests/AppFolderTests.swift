@@ -38,7 +38,7 @@ extension Library.Application_Support {
 extension Library.Caches {
     
     final class Images_Cache : Directory { }
-    var ImagesCache: Images_Cache {
+    var Images_Cache: Images_Cache {
         return appending(Images_Cache.self)
     }
     
@@ -47,12 +47,12 @@ extension Library.Caches {
 func testUsageScenario() {
     describe("typical usage") {
         $0.it("adding a folder inside Application Support") {
-            let coreData = HomeFolder.Library.ApplicationSupport.CoreData
+            let coreData = AppFolder.Library.Application_Support.CoreData
             let path = coreData.url.path
             try expect(path) == NSHomeDirectory() + "/Library/Application Support/CoreData"
         }
         $0.it("adding a folder inside Caches") {
-            let images = HomeFolder.Library.Caches.ImagesCache
+            let images = AppFolder.Library.Caches.Images_Cache
             let path = images.url.path
             try expect(path) == NSHomeDirectory() + "/Library/Caches/Images Cache"
         }

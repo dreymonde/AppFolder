@@ -10,7 +10,7 @@ import Foundation
 @testable import AppFolder
 
 func makeDir<Dir : Directory>() -> Dir {
-    let url = HomeFolder.baseURL
+    let url = AppFolder.baseURL
     return Dir(baseURL: url)
 }
 
@@ -35,8 +35,8 @@ func testDirectory() {
             try expect(henry.subpath) == "Henry Goals Collection"
         }
         $0.it("has a base url") {
-            let directory = Directory(baseURL: HomeFolder.baseURL)
-            try expect(directory.baseURL) == HomeFolder.baseURL
+            let directory = Directory(baseURL: AppFolder.baseURL)
+            try expect(directory.baseURL) == AppFolder.baseURL
         }
         $0.it("dinamically adds a directory to a path") {
             class Movies : Directory {
@@ -50,7 +50,7 @@ func testDirectory() {
             try expect(comedy.previous.last!).to.beOfType(Movies.self)
         }
         $0.it("holds all previous directory objects") {
-            let directory1 = Directory(baseURL: HomeFolder.baseURL)
+            let directory1 = Directory(baseURL: AppFolder.baseURL)
             let directory2 = directory1.appending(Directory.self).appending(Directory.self)
             try expect(directory2.previous.count) == 2
         }
@@ -77,7 +77,7 @@ func testDirectory() {
             }
             let musicDir = makeDir() as Music
             let beatlesDir = musicDir.beatles
-            let expectedBeatlesURL = HomeFolder.baseURL.appendingPathComponent("Music/Beatles", isDirectory: true)
+            let expectedBeatlesURL = AppFolder.baseURL.appendingPathComponent("Music/Beatles", isDirectory: true)
             try expect(beatlesDir.url) == expectedBeatlesURL
         }
         $0.it("has an external URL initializer") {
@@ -90,23 +90,23 @@ func testDirectory() {
     
     describe("app folder") {
         $0.it("has a documents directory") {
-            let documents = HomeFolder.Documents
+            let documents = AppFolder.Documents
             try expect(documents.subpath) == "Documents"
         }
         $0.it("has a library directory") {
-            let library = HomeFolder.Library
+            let library = AppFolder.Library
             try expect(library.subpath) == "Library"
         }
         $0.it("has a tmp directory") {
-            let tmp = HomeFolder.tmp
+            let tmp = AppFolder.tmp
             try expect(tmp.subpath) == "tmp"
         }
         $0.it("has a caches directory") {
-            let caches = HomeFolder.Library.Caches
+            let caches = AppFolder.Library.Caches
             try expect(caches.subpath) == "Library/Caches"
         }
         $0.it("has an application support directory") {
-            let applicationSupport = HomeFolder.Library.ApplicationSupport
+            let applicationSupport = AppFolder.Library.Application_Support
             try expect(applicationSupport.subpath) == "Library/Application Support"
         }
     }

@@ -82,7 +82,7 @@
 
 /* Begin PBXFileReference section */
 		52D6D97C1BEFF229002C0205 /* AppFolder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFolder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52D6D9861BEFF229002C0205 /* AppFolder-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppFolder-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D6D9861BEFF229002C0205 /* AppFolder_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFolder_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* AppFolder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFolder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* AppFolder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFolder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* AppFolder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFolder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,8 +102,8 @@
 		8933C7891EB5B82A000D00A4 /* AppFolderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFolderTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* AppFolder.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppFolder.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* AppFolderTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppFolderTests.plist; sourceTree = "<group>"; };
-		DD75027A1C68FCFC006590AF /* AppFolder-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppFolder-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD75028D1C690C7A006590AF /* AppFolder-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppFolder-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD75027A1C68FCFC006590AF /* AppFolder_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFolder_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD75028D1C690C7A006590AF /* AppFolder_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFolder_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +176,12 @@
 			isa = PBXGroup;
 			children = (
 				52D6D97C1BEFF229002C0205 /* AppFolder.framework */,
-				52D6D9861BEFF229002C0205 /* AppFolder-iOS Tests.xctest */,
+				52D6D9861BEFF229002C0205 /* AppFolder_Tests.xctest */,
 				52D6D9E21BEFFF6E002C0205 /* AppFolder.framework */,
 				52D6D9F01BEFFFBE002C0205 /* AppFolder.framework */,
 				52D6DA0F1BF000BD002C0205 /* AppFolder.framework */,
-				DD75027A1C68FCFC006590AF /* AppFolder-macOS Tests.xctest */,
-				DD75028D1C690C7A006590AF /* AppFolder-tvOS Tests.xctest */,
+				DD75027A1C68FCFC006590AF /* AppFolder_Tests.xctest */,
+				DD75028D1C690C7A006590AF /* AppFolder_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 			);
 			name = "AppFolder-iOS Tests";
 			productName = AppFolderTests;
-			productReference = 52D6D9861BEFF229002C0205 /* AppFolder-iOS Tests.xctest */;
+			productReference = 52D6D9861BEFF229002C0205 /* AppFolder_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		52D6D9E11BEFFF6E002C0205 /* AppFolder-watchOS */ = {
@@ -395,7 +395,7 @@
 			);
 			name = "AppFolder-macOS Tests";
 			productName = "AppFolder-OS Tests";
-			productReference = DD75027A1C68FCFC006590AF /* AppFolder-macOS Tests.xctest */;
+			productReference = DD75027A1C68FCFC006590AF /* AppFolder_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DD75028C1C690C7A006590AF /* AppFolder-tvOS Tests */ = {
@@ -413,7 +413,7 @@
 			);
 			name = "AppFolder-tvOS Tests";
 			productName = "AppFolder-tvOS Tests";
-			productReference = DD75028D1C690C7A006590AF /* AppFolder-tvOS Tests.xctest */;
+			productReference = DD75028D1C690C7A006590AF /* AppFolder_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -805,7 +805,7 @@
 				INFOPLIST_FILE = Configs/AppFolderTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-iOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
@@ -818,7 +818,7 @@
 				INFOPLIST_FILE = Configs/AppFolderTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-iOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 			};
@@ -970,7 +970,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-macOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
 			};
@@ -985,7 +985,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-macOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
@@ -998,7 +998,7 @@
 				INFOPLIST_FILE = Configs/AppFolderTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-tvOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
@@ -1011,7 +1011,7 @@
 				INFOPLIST_FILE = Configs/AppFolderTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AppFolder.AppFolder-tvOS-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AppFolder_Tests;
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;

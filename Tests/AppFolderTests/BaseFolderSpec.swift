@@ -36,7 +36,7 @@ func testBaseFolder() {
     
     describe("home folder") {
         $0.it("is located in home directory") {
-            let homeURL = HomeFolder.baseURL
+            let homeURL = AppFolder.baseURL
             try expect(homeURL.path) == NSHomeDirectory()
         }
     }
