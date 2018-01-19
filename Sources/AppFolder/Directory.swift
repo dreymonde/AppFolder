@@ -18,7 +18,7 @@ open class Directory {
     public final let baseURL: URL
     public final let previous: [Directory]
     
-    private var all: [Directory] {
+    private final var all: [Directory] {
         return previous + [self]
     }
     
