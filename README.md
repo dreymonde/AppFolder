@@ -178,7 +178,7 @@ And Swift Package Manager:
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/dreymonde/Time.git", majorVersion: 0, minor: 2),
+    .Package(url: "https://github.com/dreymonde/AppFolder.git", majorVersion: 0, minor: 1),
 ]
 ```
 
