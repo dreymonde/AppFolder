@@ -13,15 +13,15 @@ extension Library.Caches {
     
     class Images: Directory { }
     var Images: Images {
-        return adding()
+        return appending(Images.self)
     }
     
 }
 
 func readme() {
     #if os(iOS)
-        let cachesURL = AppFolder.Library.Caches.url
-        let documentsURL = AppFolder.Documents.url
+let cachesURL = AppFolder.Library.Caches.url
+let documentsURL = AppFolder.Documents.url
         print(cachesURL, documentsURL)
         
         let imagesCacheURL = AppFolder.Library.Caches.Images.url

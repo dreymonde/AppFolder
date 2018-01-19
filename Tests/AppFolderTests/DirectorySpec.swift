@@ -40,7 +40,7 @@ func testDirectory() {
         }
         $0.it("dinamically adds a directory to a path") {
             class Movies : Directory {
-                lazy var comedy = adding(Comedy.self)
+                lazy var comedy = appending(Comedy.self)
                 class Comedy : Directory { }
             }
             let movies = makeDir() as Movies
@@ -51,7 +51,7 @@ func testDirectory() {
         }
         $0.it("holds all previous directory objects") {
             let directory1 = Directory(baseURL: HomeFolder.baseURL)
-            let directory2 = directory1.adding().adding() as Directory
+            let directory2 = directory1.appending(Directory.self).appending(Directory.self)
             try expect(directory2.previous.count) == 2
         }
         $0.it("composes full subpath") {
@@ -59,11 +59,11 @@ func testDirectory() {
                 class Dir2 : Directory {
                     class Dir3 : Directory { }
                     var dir3: Dir3 {
-                        return adding()
+                        return appending(Dir3.self)
                     }
                 }
                 var dir2: Dir2 {
-                    return adding()
+                    return appending(Dir2.self)
                 }
             }
             let dir1 = makeDir() as Dir1
@@ -72,7 +72,7 @@ func testDirectory() {
         }
         $0.it("composes a full url") {
             class Music : Directory {
-                lazy var beatles = self.adding(Beatles.self)
+                lazy var beatles = self.appending(Beatles.self)
                 class Beatles : Directory { }
             }
             let musicDir = makeDir() as Music

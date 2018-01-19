@@ -15,7 +15,7 @@ fileprivate func fixedClassName(_ classname: String) -> String {
 
 open class Directory {
     
-    public let baseURL: URL
+    public final let baseURL: URL
     public final let previous: [Directory]
     
     private var all: [Directory] {
@@ -42,11 +42,11 @@ open class Directory {
         return all.map({ $0.folderName }).joined(separator: "/")
     }
     
-    public var url: URL {
+    public final var url: URL {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
     }
     
-    public func adding<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
+    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
     }
     
@@ -64,12 +64,12 @@ public final class Library : Directory {
     
     public final class Caches : Directory { }
     public var Caches: Caches {
-        return adding()
+        return appending(Caches.self)
     }
     
     public final class Application_Support : Directory { }
     public var ApplicationSupport: Application_Support {
-        return adding()
+        return appending(Application_Support.self)
     }
     
 }

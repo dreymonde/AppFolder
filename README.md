@@ -22,14 +22,16 @@
 import AppFolder
 
 // retrieving URLs for standard folders
-let cachesURL = AppFolder.library.caches.url
-let documentsURL = AppFolder.documents.url
+let cachesURL = AppFolder.Library.Caches.url
+let documentsURL = AppFolder.Documents.url
 
 // describing a folder inside "Library/Caches/"
 extension Library.Caches {
     
     class Images: Directory { }
-    var images: Images {
+    
+    // capitalized
+    var Images: Images {
         return adding()
     }
     

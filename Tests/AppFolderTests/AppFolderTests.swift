@@ -30,7 +30,7 @@ extension Library.Application_Support {
     
     final class CoreData : Directory { }
     var CoreData: CoreData {
-        return adding()
+        return appending(CoreData.self)
     }
     
 }
@@ -39,7 +39,7 @@ extension Library.Caches {
     
     final class Images_Cache : Directory { }
     var ImagesCache: Images_Cache {
-        return adding()
+        return appending(Images_Cache.self)
     }
     
 }
