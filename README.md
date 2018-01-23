@@ -55,7 +55,7 @@ AppFolder.baseURL
 let fileURL = caches.url.appendingPathComponent("cached-file.json")
 ```
 
-**AppFolder** represents a file structure of your app's container and gives you more better understanding of where you store your files. `AppFolder` is a main entrance point to your folders. Inside you can find:
+**AppFolder** represents a file structure of your app's container and gives you a better understanding of where your files are stored. `AppFolder` is a main entrance point to your folders. Inside you can find:
 
 - **Documents** (`AppFolder.Documents`). Inside this directory you should store *"only documents and other data that is user-generated, or that cannot otherwise be recreated by your application."* - [iOS Data Storage Guidelines][storage-guidelines-url]
 - **Library/Application Support** (`AppFolder.Library.Application_Support`). *"The Application Support directory is a good place to store files that might be in your Documents directory but that shouldn't be seen by users. For example, a database that your app needs but that the user would never open manually."* - [iOS Storage Best Practices][storage-practices-url]
@@ -98,7 +98,7 @@ extension Library.Application_Support {
 
 Now, you may wonder: since `var Files` is a property, why is `var Files`... capitalized?
 
-Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real world names (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in "real world".
+Well, it's an intentional **AppFolder** design decision. In order to represent a folder structure as accurate as possible, all properties must be written according to their real world names (with spaces substituted by `_`). So, for example, **"Documents"** is `AppFolder.Documents`, and **"tmp"** is `AppFolder.tmp` - just as in the "real world".
 
 *Naming your classes with `_` (for example, `class User_Files : Directory`) will automically generate folder name with a space ("User Files" in this case)*
 
