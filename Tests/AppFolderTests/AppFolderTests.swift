@@ -22,6 +22,8 @@ class AppFolderTests: XCTestCase {
         testDirectory()
         testBaseFolder()
         testUsageScenario()
+        let testResult = globalContext.run(reporter: StandardReporter())
+        XCTAssertTrue(testResult)
     }
     
 }
