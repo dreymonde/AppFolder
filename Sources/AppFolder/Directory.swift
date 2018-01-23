@@ -13,16 +13,16 @@ fileprivate func fixedClassName(_ classname: String) -> String {
     return classname.components(separatedBy: " ")[0]
 }
 
-open class Directory {
+open class DynamicDirectory {
     
     public final let baseURL: URL
-    public final let previous: [Directory]
+    public final let previous: [DynamicDirectory]
     
-    private final var all: [Directory] {
+    internal final var all: [DynamicDirectory] {
         return previous + [self]
     }
     
-    required public init(baseURL: URL, previous: [Directory] = []) {
+    public init(baseURL: URL, previous: [DynamicDirectory] = []) {
         self.baseURL = baseURL
         self.previous = previous
     }
@@ -44,6 +44,36 @@ open class Directory {
     
     public final var url: URL {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
+    }
+    
+}
+
+open class CustomDirectory : DynamicDirectory {
+    
+    public init(name: String, baseURL: URL, previous: [DynamicDirectory] = []) {
+        self._folderName = name
+        super.init(baseURL: baseURL, previous: previous)
+    }
+    
+    private let _folderName: String
+    open override var folderName: String {
+        return _folderName
+    }
+    
+}
+
+extension DynamicDirectory {
+    
+    public func appending(_ folderName: String) -> CustomDirectory {
+        return CustomDirectory(name: folderName, baseURL: baseURL, previous: all)
+    }
+    
+}
+
+open class Directory : DynamicDirectory {
+    
+    public required override init(baseURL: URL, previous: [DynamicDirectory] = []) {
+        super.init(baseURL: baseURL, previous: previous)
     }
     
     public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
