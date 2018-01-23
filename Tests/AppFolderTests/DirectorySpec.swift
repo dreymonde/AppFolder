@@ -9,7 +9,7 @@
 import Foundation
 @testable import AppFolder
 
-func makeDir<Dir : Directory>() -> Dir {
+func makeDirectory<Dir : Directory>() -> Dir {
     let url = AppFolder.baseURL
     return Dir(baseURL: url)
 }
@@ -19,19 +19,19 @@ func testDirectory() {
     describe("Directory object") {
         $0.it("automatically generates name") {
             class John : Directory { }
-            let john = makeDir() as John
+            let john = makeDirectory() as John
             try expect(john.folderName) == "John"
         }
         $0.it("automatically generates name with whitespaces for type names with _") {
             class John_Doe : Directory { }
-            let john = makeDir() as John_Doe
+            let john = makeDirectory() as John_Doe
             try expect(john.folderName) == "John Doe"
         }
         $0.it("can provide a custom name") {
             class Henry : Directory {
                 override var folderName: String { return "Henry Goals Collection" }
             }
-            let henry = makeDir() as Henry
+            let henry = makeDirectory() as Henry
             try expect(henry.subpath) == "Henry Goals Collection"
         }
         $0.it("has a base url") {
@@ -43,7 +43,7 @@ func testDirectory() {
                 lazy var comedy = appending(Comedy.self)
                 class Comedy : Directory { }
             }
-            let movies = makeDir() as Movies
+            let movies = makeDirectory() as Movies
             let comedy = movies.comedy
             try expect(comedy.folderName) == "Comedy"
             try expect(comedy.previous.last!.folderName) == "Movies"
@@ -66,7 +66,7 @@ func testDirectory() {
                     return appending(Dir2.self)
                 }
             }
-            let dir1 = makeDir() as Dir1
+            let dir1 = makeDirectory() as Dir1
             let finalDir = dir1.dir2.dir3
             try expect(finalDir.subpath) == "Dir1/Dir2/Dir3"
         }
@@ -75,13 +75,13 @@ func testDirectory() {
                 lazy var beatles = self.appending(Beatles.self)
                 class Beatles : Directory { }
             }
-            let musicDir = makeDir() as Music
+            let musicDir = makeDirectory() as Music
             let beatlesDir = musicDir.beatles
             let expectedBeatlesURL = AppFolder.baseURL.appendingPathComponent("Music/Beatles", isDirectory: true)
             try expect(beatlesDir.url) == expectedBeatlesURL
         }
         $0.it("has an external URL initializer") {
-            let directory = makeDir() as Directory
+            let directory = makeDirectory() as Directory
             let url = directory.url
             let extURL = URL(of: directory)
             try expect(extURL) == url
