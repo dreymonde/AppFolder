@@ -9,6 +9,36 @@
 import Foundation
 import AppFolder
 
+func showcase() throws {
+    let cachesURL = AppFolder.Library.Caches.url
+    let userCacheURL = cachesURL.appendingPathComponent("user-cache.json")
+    let userCacheData = try Data(contentsOf: userCacheURL)
+    print(userCacheData)
+}
+
+extension Documents {
+    
+    final class Photos : Directory { }
+    
+    var Photos: Photos {
+        return appending(Photos.self)
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 extension Library.Caches {
     
     class Images: Directory { }
@@ -32,9 +62,6 @@ enum MyAppGroup : AppGroup {
     static var groupIdentifier: String {
         return "group.com.your-app.your-app-group"
     }
-}
-
-func readme() {
 }
 
 final class CustomNamedFolder : Directory {

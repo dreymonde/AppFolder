@@ -37,7 +37,6 @@ public enum AppFolder : BaseFolder {
     
     public static let baseURL: URL = {
         let url = URL(fileURLWithPath: NSHomeDirectory(), isDirectory: true)
-        print("BASE URL:", url)
         return url
     }()
     
