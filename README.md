@@ -11,6 +11,8 @@
 
 **AppFolder** has a simple and beautiful interface which was made possible with the help of **Swift**'s dark magic: _inheritance_ 😱
 
+If you want to learn more about the idea, check out [Introducing AppFolder](https://medium.com/anysuggestion/introducing-appfolder-704b007bd83b) on Medium.
+
 ## Usage
 
 ```swift
