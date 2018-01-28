@@ -27,9 +27,16 @@ extension BaseFolder {
         return Docs(baseURL: baseURL)
     }
     
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    public static var tmp: Temporary {
+    return Temporary(baseURL: baseURL)
+    }
+    #elseif os(macOS)
+    @available(*, deprecated, message: "AppFolder.tmp is unavailable on macOS")
     public static var tmp: Temporary {
         return Temporary(baseURL: baseURL)
     }
+    #endif
     
 }
 
@@ -51,7 +58,7 @@ public protocol AppGroup {
 public final class AppGroupContainer<Group : AppGroup> : BaseFolder {
     
     public static var baseURL: URL {
-       return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Group.groupIdentifier)!
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Group.groupIdentifier)!
     }
     
 }
