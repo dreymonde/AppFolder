@@ -119,10 +119,12 @@ func testDirectory() {
             let library = AppFolder.Library
             try expect(library.subpath) == "Library"
         }
-        $0.it("has a tmp directory") {
-            let tmp = AppFolder.tmp
-            try expect(tmp.subpath) == "tmp"
-        }
+        #if !os(macOS)
+            $0.it("has a tmp directory") {
+                let tmp = AppFolder.tmp
+                try expect(tmp.subpath) == "tmp"
+            }
+        #endif
         $0.it("has a caches directory") {
             let caches = AppFolder.Library.Caches
             try expect(caches.subpath) == "Library/Caches"

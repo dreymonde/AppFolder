@@ -105,8 +105,18 @@ public final class Library : Directory {
 }
 
 public final class Documents : Directory { }
-public final class Temporary : Directory {
-    public override var folderName: String {
-        return "tmp"
+
+#if os(iOS) || os(tvOS) || os(watchOS)
+    public final class Temporary : Directory {
+        public override var folderName: String {
+            return "tmp"
+        }
     }
-}
+#elseif os(macOS)
+    @available(*, deprecated, message: "AppFolder.Temporary is unavailable on macOS")
+    public final class Temporary : Directory {
+        public override var folderName: String {
+            return "tmp"
+        }
+    }
+#endif

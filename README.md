@@ -158,6 +158,8 @@ final class CustomNamedFolder : Directory {
 
 *[NSHomeDirectory() reference](https://developer.apple.com/documentation/foundation/1413045-nshomedirectory)*
 
+`AppFolder.tmp` is also *deprecated* on macOS because it may give results different from `NSTemporaryDirectory()`. To use temporary directory on macOS, we recommend using `FileManager.default.temporaryDirectory`.
+
 ## Disclaimer
 
 **AppFolder** is in a very early stage. Some stuff will probably be broken at some point.
