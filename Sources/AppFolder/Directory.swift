@@ -15,6 +15,7 @@ fileprivate func fixedClassName(_ classname: String) -> String {
 
 open class Directory {
     
+    /// Returns the base URL.
     public final let baseURL: URL
     public final let previous: [Directory]
     
@@ -34,19 +35,25 @@ open class Directory {
             .joined(separator: " ")
     }
     
+    /// Returns the folder name according to their real world names.
+    ///
+    /// For example: class User_Files -> User Files
     open var folderName: String {
         return type(of: self).defaultFolderName
     }
     
+    /// Returns full subpath of your folder.
     public final var subpath: String {
         return all.map({ $0.folderName }).joined(separator: "/")
     }
     
+    /// Returns the folder url.
     public final var url: URL {
         return baseURL.appendingPathComponent(subpath, isDirectory: true)
     }
     
-    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
+    /// Append an Directory to parents Directory
+    public final func appending<Subdirectory: Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
     }
     
@@ -60,23 +67,38 @@ extension URL {
     
 }
 
-public final class Library : Directory {
+/// Class that represents a Library directory
+public final class Library: Directory {
     
-    public final class Caches : Directory { }
+    /// Class that represents a caches directory
+    public final class Caches: Directory { }
+    
+    /// A reference to the cache folder used by this file system.
+    ///
+    /// Data that can be downloaded again or regenerated should be stored here. Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications. 
     public var Caches: Caches {
         return appending(Caches.self)
     }
     
-    public final class Application_Support : Directory { }
+    /// Class that represents Application Support directory
+    public final class Application_Support: Directory { }
+    
+    /// A reference to the application support folder used by this file system.
+    /// 
+    /// The Application Support directory is a good place to store files that might be in your Documents directory but that shouldn't be seen by users. For example, a database that your app needs but that the user would never open manually.
     public var Application_Support: Application_Support {
         return appending(Application_Support.self)
     }
     
 }
 
-public final class Documents : Directory { }
-public final class Temporary : Directory {
+/// Class that represents Documents directory
+public final class Documents: Directory { }
+
+/// Class that represents Temporary directory
+public final class Temporary: Directory {
     public override var folderName: String {
+        NSTemporaryDirectory()
         return "tmp"
     }
 }
