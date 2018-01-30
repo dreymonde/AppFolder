@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 fileprivate func fixedClassName(_ classname: String) -> String {
     // check out SR-6787 for more
@@ -35,9 +36,11 @@ open class DynamicDirectory {
             .joined(separator: " ")
     }
     
-    /// Returns the folder name according to their real world names.
-    ///
-    /// For example: class User_Files -> User Files
+    /** 
+     Returns the folder name according to their real world names.
+     
+     - For example: class User_Files -> User Files
+     */
     open var folderName: String {
         return type(of: self).defaultFolderName
     }
@@ -54,7 +57,7 @@ open class DynamicDirectory {
     
 }
 
-open class CustomDirectory : DynamicDirectory {
+open class CustomDirectory: DynamicDirectory {
     
     public init(name: String, baseURL: URL, previous: [DynamicDirectory] = []) {
         self._folderName = name
@@ -76,7 +79,7 @@ extension DynamicDirectory {
     
 }
 
-open class Directory : DynamicDirectory {
+open class Directory: DynamicDirectory {
     
     public required override init(baseURL: URL, previous: [DynamicDirectory] = []) {
         super.init(baseURL: baseURL, previous: previous)
@@ -102,9 +105,12 @@ public final class Library: Directory {
     /// Class that represents a caches directory
     public final class Caches: Directory { }
     
-    /// A reference to the cache folder used by this file system.
-    ///
-    /// Data that can be downloaded again or regenerated should be stored here. Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications. 
+    /**
+     A reference to the cache folder used by this file system.
+     
+     # Important #
+      - Data that can be downloaded again or regenerated should be stored here. Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications.
+     */
     public var Caches: Caches {
         return appending(Caches.self)
     }
@@ -112,9 +118,12 @@ public final class Library: Directory {
     /// Class that represents Application Support directory
     public final class Application_Support: Directory { }
     
-    /// A reference to the application support folder used by this file system.
-    /// 
-    /// The Application Support directory is a good place to store files that might be in your Documents directory but that shouldn't be seen by users. For example, a database that your app needs but that the user would never open manually.
+    /**
+     A reference to the application support folder used by this file system.
+     
+     # Important #
+     - The Application Support directory is a good place to store files that might be in your Documents directory but that shouldn't be seen by users. For example, a database that your app needs but that the user would never open manually.
+     */
     public var Application_Support: Application_Support {
         return appending(Application_Support.self)
     }
@@ -122,11 +131,12 @@ public final class Library: Directory {
 }
 
 /// Class that represents Documents directory
-public final class Documents : Directory { }
+public final class Documents: Directory { }
 
 #if os(iOS) || os(tvOS) || os(watchOS)
-/// Class that represents Temporary directory
-    public final class Temporary : Directory {
+    
+    /// Class that represents Temporary directory
+    public final class Temporary: Directory {
         public override var folderName: String {
             return "tmp"
         }
@@ -134,7 +144,9 @@ public final class Documents : Directory { }
 #elseif os(macOS)
     @available(*, deprecated, message: "AppFolder.Temporary is unavailable on macOS")
     /// Class that represents Temporary directory
-    public final class Temporary : Directory {
+    /// ## Important Notes ##
+    /// 1. For macOS *AppFolder.Temporary* is unavailable
+    public final class Temporary: Directory {
         public override var folderName: String {
             return "tmp"
         }
