@@ -88,6 +88,28 @@ func testDirectory() {
         }
     }
     
+    describe("custom directory") {
+        $0.it("can be provided with a name in runtime") {
+            let customDir = CustomDirectory(name: "Custom", baseURL: AppFolder.baseURL, previous: [])
+            try expect(customDir.folderName) == "Custom"
+        }
+        $0.it("can be created from another directory") {
+            let customDir = AppFolder.Library.Application_Support.appending("Custom")
+            try expect(customDir).to.beOfType(CustomDirectory.self)
+            try expect(customDir.subpath) == "Library/Application Support/Custom"
+            try expect(customDir.folderName) == "Custom"
+        }
+    }
+    
+    describe("dynamic directory") {
+        $0.it("can be subclassed to create customizable directory") {
+            let user5 = AppFolder.Library.Application_Support.User(id: 5)
+            try expect(user5.folderName) == "User-5"
+            try expect(user5.subpath) == "Library/Application Support/User-5"
+            try expect(user5).to.beOfType(UserIDDirectory.self)
+        }
+    }
+    
     describe("app folder") {
         $0.it("has a documents directory") {
             let documents = AppFolder.Documents
@@ -97,10 +119,12 @@ func testDirectory() {
             let library = AppFolder.Library
             try expect(library.subpath) == "Library"
         }
-        $0.it("has a tmp directory") {
-            let tmp = AppFolder.tmp
-            try expect(tmp.subpath) == "tmp"
-        }
+        #if !os(macOS)
+            $0.it("has a tmp directory") {
+                let tmp = AppFolder.tmp
+                try expect(tmp.subpath) == "tmp"
+            }
+        #endif
         $0.it("has a caches directory") {
             let caches = AppFolder.Library.Caches
             try expect(caches.subpath) == "Library/Caches"
@@ -111,4 +135,20 @@ func testDirectory() {
         }
     }
     
+}
+
+final class UserIDDirectory : DynamicDirectory {
+    let userID: Int
+    init(userID: Int, baseURL: URL, previous: [DynamicDirectory]) {
+        self.userID = userID
+        super.init(baseURL: baseURL, previous: previous)
+    }
+    override var folderName: String {
+        return "User-\(userID)"
+    }
+}
+extension Library.Application_Support {
+    func User(id: Int) -> UserIDDirectory {
+        return UserIDDirectory(userID: id, baseURL: baseURL, previous: previous + [self])
+    }
 }

@@ -6,7 +6,7 @@ import Darwin
 
 
 let globalContext: GlobalContext = {
-  atexit { run() }
+  // atexit { run() }
   return GlobalContext()
 }()
 

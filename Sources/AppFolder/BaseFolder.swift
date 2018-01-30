@@ -30,14 +30,21 @@ extension BaseFolder {
         return Docs(baseURL: baseURL)
     }
     
+    #if os(iOS) || os(tvOS) || os(watchOS)
     /// A reference to the temporary folder used by this file system
     ///
     /// Use this directory to write temporary files that do not need to persist between launches of your app. 
     /// Your app should remove files from this directory when they are no longer needed
     /// however, the system may purge this directory when your app is not running.
     public static var tmp: Temporary {
+    return Temporary(baseURL: baseURL)
+    }
+    #elseif os(macOS)
+    @available(*, deprecated, message: "AppFolder.tmp is unavailable on macOS")
+    public static var tmp: Temporary {
         return Temporary(baseURL: baseURL)
     }
+    #endif
     
 }
 
@@ -58,7 +65,7 @@ public protocol AppGroup {
 public final class AppGroupContainer<Group: AppGroup>: BaseFolder {
     
     public static var baseURL: URL {
-       return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Group.groupIdentifier)!
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Group.groupIdentifier)!
     }
     
 }
