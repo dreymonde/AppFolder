@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 fileprivate func fixedClassName(_ classname: String) -> String {
     // check out SR-6787 for more
