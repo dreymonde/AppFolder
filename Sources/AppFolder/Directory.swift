@@ -56,7 +56,7 @@ open class DynamicDirectory {
     
 }
 
-open class CustomDirectory: DynamicDirectory {
+open class CustomDirectory : DynamicDirectory {
     
     public init(name: String, baseURL: URL, previous: [DynamicDirectory] = []) {
         self._folderName = name
@@ -78,7 +78,7 @@ extension DynamicDirectory {
     
 }
 
-open class Directory: DynamicDirectory {
+open class Directory : DynamicDirectory {
     
     public required override init(baseURL: URL, previous: [DynamicDirectory] = []) {
         super.init(baseURL: baseURL, previous: previous)
@@ -99,10 +99,10 @@ extension URL {
 }
 
 /// Class that represents a Library directory
-public final class Library: Directory {
+public final class Library : Directory {
     
     /// Class that represents a caches directory
-    public final class Caches: Directory { }
+    public final class Caches : Directory { }
     
     /**
      A reference to the cache folder used by this file system.
@@ -115,7 +115,7 @@ public final class Library: Directory {
     }
     
     /// Class that represents Application Support directory
-    public final class Application_Support: Directory { }
+    public final class Application_Support : Directory { }
     
     /**
      A reference to the application support folder used by this file system.
@@ -130,12 +130,12 @@ public final class Library: Directory {
 }
 
 /// Class that represents Documents directory
-public final class Documents: Directory { }
+public final class Documents : Directory { }
 
 #if os(iOS) || os(tvOS) || os(watchOS)
     
     /// Class that represents Temporary directory
-    public final class Temporary: Directory {
+    public final class Temporary : Directory {
         public override var folderName: String {
             return "tmp"
         }
