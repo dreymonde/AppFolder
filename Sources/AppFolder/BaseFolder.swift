@@ -89,7 +89,7 @@ public enum AppFolder : BaseFolder {
     
 }
 
-/// Protocol that define default methods of a AppGroup.
+/// Static representation of an app group identifier.
 public protocol AppGroup {
     static var groupIdentifier: String { get }
 }
