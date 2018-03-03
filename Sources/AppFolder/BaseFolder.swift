@@ -94,7 +94,7 @@ public protocol AppGroup {
     static var groupIdentifier: String { get }
 }
 
-public final class AppGroupContainer<Group : AppGroup> : BaseFolder {
+public enum AppGroupContainer<Group : AppGroup> : BaseFolder {
     
     /// Returns the base URL.
     public static var baseURL: URL {
