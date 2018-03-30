@@ -167,24 +167,24 @@ final class CustomNamedFolder : Directory {
 **AppFolder** is available through [Carthage][carthage-url]. To install, just write into your Cartfile:
 
 ```ruby
-github "dreymonde/AppFolder" ~> 0.1.0
+github "dreymonde/AppFolder" ~> 0.2.0
 ```
 
 **AppFolder** is also available through [Cocoapods][cocoapods-url]:
 
 ```ruby
-pod 'AppFolder', '~> 0.1.0'
+pod 'AppFolder', '~> 0.2.0'
 ```
 
 And Swift Package Manager:
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/dreymonde/AppFolder.git", majorVersion: 0, minor: 1),
+    .Package(url: "https://github.com/dreymonde/AppFolder.git", majorVersion: 0, minor: 2),
 ]
 ```
 
-[swift-badge]: https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat
+[swift-badge]: https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat
 [swift-url]: https://swift.org
 [platform-badge]: https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg
 [platform-url]: https://developer.apple.com/swift/
