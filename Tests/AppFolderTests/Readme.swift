@@ -21,7 +21,7 @@ extension Documents {
     final class Photos : Directory { }
     
     var Photos: Photos {
-        return appending(Photos.self)
+        return subdirectory()
     }
     
 }
@@ -43,7 +43,7 @@ extension Library.Caches {
     
     class Images: Directory { }
     var Images: Images {
-        return appending(Images.self)
+        return subdirectory()
     }
     
 }
@@ -53,7 +53,7 @@ extension Library.Application_Support {
     final class Files : Directory { }
     
     var Files: Files {
-        return appending()
+        return subdirectory()
     }
     
 }

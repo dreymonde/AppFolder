@@ -27,7 +27,7 @@ extension Library.Caches {
     class Images: Directory { }
     
     var Images: Images {
-        return appending(Images.self)
+        return subdirectory()
     }
     
 }
@@ -90,13 +90,11 @@ extension Library.Application_Support {
     final class Files : Directory { }
     
     var Files: Files {
-        return appending()
+        return subdirectory()
     }
     
 }
 ```
-
-*In this situation `appending()` can resolve a return type, so no need to write `appending(Files.self)`*
 
 Now, you may wonder: since `var Files` is a property, why is `var Files`... capitalized?
 
@@ -157,6 +155,8 @@ final class CustomNamedFolder : Directory {
 > In macOS, it is the application’s sandbox directory or the current user’s home directory (if the application is not in a sandbox)
 
 *[NSHomeDirectory() reference](https://developer.apple.com/documentation/foundation/1413045-nshomedirectory)*
+
+`AppFolder.tmp` is also *deprecated* on macOS because it may give results different from `NSTemporaryDirectory()`. To use temporary directory on macOS, we recommend using `FileManager.default.temporaryDirectory`.
 
 ## Disclaimer
 
