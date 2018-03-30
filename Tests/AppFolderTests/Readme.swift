@@ -10,7 +10,7 @@ import Foundation
 import AppFolder
 
 func showcase() throws {
-    let cachesURL = AppFolder.Library.Caches.url
+    let cachesURL = AppFolder.Library.caches.url
     let userCacheURL = cachesURL.appendingPathComponent("user-cache.json")
     let userCacheData = try Data(contentsOf: userCacheURL)
     print(userCacheData)
@@ -20,7 +20,7 @@ extension Documents {
     
     final class Photos : Directory { }
     
-    var Photos: Photos {
+    var photos: Photos {
         return appending(Photos.self)
     }
     
@@ -42,7 +42,7 @@ extension Documents {
 extension Library.Caches {
     
     class Images: Directory { }
-    var Images: Images {
+    var images: Images {
         return appending(Images.self)
     }
     
@@ -52,7 +52,7 @@ extension Library.Application_Support {
     
     final class Files : Directory { }
     
-    var Files: Files {
+    var files: Files {
         return appending()
     }
     

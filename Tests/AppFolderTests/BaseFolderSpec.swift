@@ -35,12 +35,12 @@ func testBaseFolder() {
             try expect(documents).to.beOfType(Documents.self)
         }
         $0.it("has a caches folder") {
-            let caches = TestBaseFolder.Library.Caches
+            let caches = TestBaseFolder.Library.caches
             try expect(caches.baseURL) == TestBaseFolder.baseURL
             try expect(caches).to.beOfType(Library.Caches.self)
         }
         $0.it("has an application support folder") {
-            let support = TestBaseFolder.Library.Application_Support
+            let support = TestBaseFolder.Library.application_Support
             try expect(support.baseURL) == TestBaseFolder.baseURL
             try expect(support).to.beOfType(Library.Application_Support.self)
         }
@@ -71,10 +71,10 @@ func testBaseFolder() {
             try check(directory: AppFolder.Documents, for: .documentDirectory)
         }
         $0.it("caches directory is located at the right place") {
-            try check(directory: AppFolder.Library.Caches, for: .cachesDirectory)
+            try check(directory: AppFolder.Library.caches, for: .cachesDirectory)
         }
         $0.it("application support directory is located at the right place") {
-            try check(directory: AppFolder.Library.Application_Support, for: .applicationSupportDirectory)
+            try check(directory: AppFolder.Library.application_Support, for: .applicationSupportDirectory)
         }
         $0.it("library directory is located at the right place") {
             try check(directory: AppFolder.Library, for: .libraryDirectory)

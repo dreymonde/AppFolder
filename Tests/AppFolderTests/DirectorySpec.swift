@@ -94,7 +94,7 @@ func testDirectory() {
             try expect(customDir.folderName) == "Custom"
         }
         $0.it("can be created from another directory") {
-            let customDir = AppFolder.Library.Application_Support.appending("Custom")
+            let customDir = AppFolder.Library.application_Support.appending("Custom")
             try expect(customDir).to.beOfType(CustomDirectory.self)
             try expect(customDir.subpath) == "Library/Application Support/Custom"
             try expect(customDir.folderName) == "Custom"
@@ -103,7 +103,7 @@ func testDirectory() {
     
     describe("dynamic directory") {
         $0.it("can be subclassed to create customizable directory") {
-            let user5 = AppFolder.Library.Application_Support.User(id: 5)
+            let user5 = AppFolder.Library.application_Support.User(id: 5)
             try expect(user5.folderName) == "User-5"
             try expect(user5.subpath) == "Library/Application Support/User-5"
             try expect(user5).to.beOfType(UserIDDirectory.self)
@@ -126,11 +126,11 @@ func testDirectory() {
             }
         #endif
         $0.it("has a caches directory") {
-            let caches = AppFolder.Library.Caches
+            let caches = AppFolder.Library.caches
             try expect(caches.subpath) == "Library/Caches"
         }
         $0.it("has an application support directory") {
-            let applicationSupport = AppFolder.Library.Application_Support
+            let applicationSupport = AppFolder.Library.application_Support
             try expect(applicationSupport.subpath) == "Library/Application Support"
         }
     }
