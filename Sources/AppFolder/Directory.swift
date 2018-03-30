@@ -84,8 +84,12 @@ open class Directory : DynamicDirectory {
         super.init(baseURL: baseURL, previous: previous)
     }
     
-    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type = Subdirectory.self) -> Subdirectory {
+    public final func appending<Subdirectory : Directory>(_ subdirectory: Subdirectory.Type) -> Subdirectory {
         return Subdirectory(baseURL: baseURL, previous: all)
+    }
+    
+    public final func subdirectory<Subdirectory : Directory>() -> Subdirectory {
+        return appending(Subdirectory.self)
     }
     
 }
@@ -111,7 +115,7 @@ public final class Library : Directory {
       - Data that can be downloaded again or regenerated should be stored here. Examples of files you should put in the Caches directory include database cache files and downloadable content, such as that used by magazine, newspaper, and map applications.
      */
     public var Caches: Caches {
-        return appending(Caches.self)
+        return subdirectory()
     }
     
     /// Class that represents Application Support directory
@@ -124,7 +128,7 @@ public final class Library : Directory {
      - The Application Support directory is a good place to store files that might be in your Documents directory but that shouldn't be seen by users. For example, a database that your app needs but that the user would never open manually.
      */
     public var Application_Support: Application_Support {
-        return appending(Application_Support.self)
+        return subdirectory()
     }
     
 }
@@ -140,14 +144,5 @@ public final class Documents : Directory { }
             return "tmp"
         }
     }
-#elseif os(macOS)
-    @available(*, deprecated, message: "AppFolder.Temporary is unavailable on macOS")
-    /// Class that represents Temporary directory
-    /// ## Important Notes ##
-    /// 1. For macOS *AppFolder.Temporary* is unavailable
-    public final class Temporary: Directory {
-        public override var folderName: String {
-            return "tmp"
-        }
-    }
+
 #endif

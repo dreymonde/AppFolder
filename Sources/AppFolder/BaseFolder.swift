@@ -53,19 +53,7 @@ extension BaseFolder {
     public static var tmp: Temporary {
         return Temporary(baseURL: baseURL)
     }
-    #elseif os(macOS)
-    @available(*, deprecated, message: "AppFolder.tmp is unavailable on macOS")
-    /**
-     A reference to the temporary folder used by this file system
-     
-     # Important #
-      - Use this directory to write temporary files that do not need to persist between launches of your app. Your app should remove files from this directory when they are no longer needed however, the system may purge this directory when your app is not running.
-     */
-    public static var tmp: Temporary {
-        return Temporary(baseURL: baseURL)
-    }
     #endif
-    
 }
 
 /**

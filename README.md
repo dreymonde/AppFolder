@@ -27,7 +27,7 @@ extension Library.Caches {
     class Images: Directory { }
     
     var Images: Images {
-        return appending(Images.self)
+        return subdirectory()
     }
     
 }
@@ -90,13 +90,11 @@ extension Library.Application_Support {
     final class Files : Directory { }
     
     var Files: Files {
-        return appending()
+        return subdirectory()
     }
     
 }
 ```
-
-*In this situation `appending()` can resolve a return type, so no need to write `appending(Files.self)`*
 
 Now, you may wonder: since `var Files` is a property, why is `var Files`... capitalized?
 
