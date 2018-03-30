@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AppFolder"
-  s.version      = "0.1.1"
+  s.version      = "0.2.0"
   s.summary      = "Never use NSSearchPathForDirectoriesInDomains again. Never."
   s.description  = <<-DESC
     Your app folder structure. Friendly and strongly-typed. Friendly API for "Documents/", "Library/Caches/", "Library/Application Support", "tmp/" and any other directory you create.
