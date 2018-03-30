@@ -31,7 +31,7 @@ class AppFolderTests: XCTestCase {
 extension Library.Application_Support {
     
     final class CoreData : Directory { }
-    var CoreData: CoreData {
+    var coreData: CoreData {
         return appending(CoreData.self)
     }
     
@@ -40,7 +40,7 @@ extension Library.Application_Support {
 extension Library.Caches {
     
     final class Images_Cache : Directory { }
-    var Images_Cache: Images_Cache {
+    var images_Cache: Images_Cache {
         return appending(Images_Cache.self)
     }
     
@@ -49,12 +49,12 @@ extension Library.Caches {
 func testUsageScenario() {
     describe("typical usage") {
         $0.it("adding a folder inside Application Support") {
-            let coreData = AppFolder.Library.Application_Support.CoreData
+            let coreData = AppFolder.Library.application_Support.coreData
             let path = coreData.url.path
             try expect(path) == NSHomeDirectory() + "/Library/Application Support/CoreData"
         }
         $0.it("adding a folder inside Caches") {
-            let images = AppFolder.Library.Caches.Images_Cache
+            let images = AppFolder.Library.caches.images_Cache
             let path = images.url.path
             try expect(path) == NSHomeDirectory() + "/Library/Caches/Images Cache"
         }

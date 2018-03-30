@@ -25,8 +25,8 @@ extension BaseFolder {
      
      Example:
      ```
-     let applicationSupport = AppFolder.Library.Application_Support
-     let caches = AppFolder.Library.Caches
+     let applicationSupport = AppFolder.Library.application_Support
+     let caches = AppFolder.Library.caches
      ```
      */
     public static var Library: Library {
@@ -74,7 +74,7 @@ extension BaseFolder {
  
  ````
  let documents = AppFolder.Documents
- let caches = AppFolder.Library.Caches
+ let caches = AppFolder.Library.caches
  let cachesURL = caches.url
  ````
  
