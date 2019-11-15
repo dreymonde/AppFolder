@@ -164,27 +164,52 @@ final class CustomNamedFolder : Directory {
 
 ## Installation
 
-**AppFolder** is available through [Carthage][carthage-url]. To install, just write into your Cartfile:
+#### Swift Package Manager
 
-```ruby
-github "dreymonde/AppFolder" ~> 0.2.0
+Starting with Xcode 11, **AppFolder** is officially available *only* via Swift Package Manager.
+
+In Xcode 11 or greater, in you project, select: `File > Swift Packages > Add Pacakage Dependency`
+
+In the search bar type
+
 ```
+https://github.com/dreymonde/AppFolder
+``` 
 
-**AppFolder** is also available through [Cocoapods][cocoapods-url]:
+Then proceed with installation.
 
-```ruby
-pod 'AppFolder', '~> 0.2.0'
-```
+> If you can't find anything in the panel of the Swift Packages you probably haven't added yet your github account.
+You can do that under the **Preferences** panel of your Xcode, in the **Accounts** section.
 
-And Swift Package Manager:
+For command-line based apps, you can just add this directly to your **Package.swift** file:
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/dreymonde/AppFolder.git", majorVersion: 0, minor: 2),
+    .package(url: "https://github.com/dreymonde/AppFolder", from: "0.2.0"),
 ]
 ```
 
-[swift-badge]: https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat
+#### Manual
+
+Of course, you always have an option of just copying-and-pasting the code - **AppFolder** is just a few files, so feel free.
+
+#### Deprecated dependency managers
+
+Last **AppFolder** version to support [Carthage][carthage-url] and [Cocoapods][cocoapods-url] is **0.2.0**. Carthage and Cocoapods will no longer be officially supported.
+
+Carthage:
+
+```ruby
+github "dreymonde/Delegated" ~> 0.2.0
+```
+
+Cocoapods:
+
+```ruby
+pod 'Delegated', '~> 0.2.0'
+```
+
+[swift-badge]: https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat
 [swift-url]: https://swift.org
 [platform-badge]: https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg
 [platform-url]: https://developer.apple.com/swift/
