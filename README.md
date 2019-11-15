@@ -200,13 +200,13 @@ Last **AppFolder** version to support [Carthage][carthage-url] and [Cocoapods][c
 Carthage:
 
 ```ruby
-github "dreymonde/Delegated" ~> 0.2.0
+github "dreymonde/AppFolder" ~> 0.2.0
 ```
 
 Cocoapods:
 
 ```ruby
-pod 'Delegated', '~> 0.2.0'
+pod 'AppFolder', '~> 0.2.0'
 ```
 
 [swift-badge]: https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat
