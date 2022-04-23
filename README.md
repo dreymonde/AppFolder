@@ -2,8 +2,8 @@
 
 # AppFolder
 
-[![Swift][swift-badge]][swift-url]
-[![Platform][platform-badge]][platform-url]
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdreymonde%2FAppFolder%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/dreymonde/AppFolder)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdreymonde%2FAppFolder%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/dreymonde/AppFolder)
 [![Build Status](https://travis-ci.org/dreymonde/AppFolder.svg?branch=master)](https://travis-ci.org/dreymonde/AppFolder)
 
 **AppFolder** is a lightweight framework that lets you design a friendly, strongly-typed representation of a directories inside your app's container. All the system directories like **"Caches/"** and 
